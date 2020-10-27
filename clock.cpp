@@ -8,7 +8,8 @@ Clock::Clock(QObject *parent)
 {
 }
 
-QString& Clock::SetTime(){
+QString& Clock::SetTime()
+{
     auto time = QTime::currentTime();
     timeText = time.toString("hh : mm ap");     // AM PM
 
