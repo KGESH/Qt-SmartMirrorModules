@@ -9,7 +9,7 @@ class Clock : public QObject
     Q_OBJECT
 
 public:
-    Clock(QObject *parent = 0);
+    explicit Clock(QObject *parent = 0);
 
 
 public slots:

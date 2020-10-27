@@ -1,6 +1,6 @@
 #ifndef DATE_H
 #define DATE_H
-
+#include "mainwindow.h"
 #include <QObject>
 
 class Date : public QObject
@@ -9,7 +9,8 @@ class Date : public QObject
 public:
     explicit Date(QObject *parent = nullptr);
 
-signals:
+public slots:
+    QString SetDate() const;
 
 };
 

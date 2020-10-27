@@ -17,11 +17,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     clock.cpp \
+    date.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     clock.h \
+    date.h \
     mainwindow.h
 
 FORMS += \

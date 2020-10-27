@@ -3,7 +3,10 @@
 
 #include <QMainWindow>
 #include "clock.h"
+#include "date.h"
+
 class Clock;
+class Date;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,11 +26,13 @@ public:
 
 public slots:
     void ShowTime();
+    void ShowDate();
 
 
 private:
     const QFont TIME_FONT;
     Clock *clock_;
+    Date *date_;
 
 
 };

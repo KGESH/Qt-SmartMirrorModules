@@ -12,9 +12,13 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->ui_time->setFont(TIME_FONT);
+    ui->ui_date->setFont(TIME_FONT);
     clock_ = new Clock(this);
+    date_ = new Date(this);
     auto *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), SLOT(ShowTime()));
+    connect(timer, SIGNAL(timeout()), SLOT(ShowDate()));
+
     timer->start(1000);
 }
 
@@ -27,4 +31,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::ShowTime(){
     ui->ui_time->setText(clock_->SetTime());
+}
+
+
+void MainWindow::ShowDate(){
+    ui->ui_date->setText(date_->SetDate());
 }
