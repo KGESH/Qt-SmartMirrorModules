@@ -31,11 +31,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::ShowTime()
 {
-    ui->ui_time->setText(clock_->SetTime());
+    ui->ui_time->setText(clock_->GetCurrentTime());
 }
 
 
 void MainWindow::ShowDate()
 {
-    ui->ui_date->setText(date_->SetDate());
+    ui->ui_date->setText(date_->GetCurrentDate());
 }

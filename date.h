@@ -11,9 +11,7 @@ class Date : public QObject
 
 public:
     explicit Date(QObject *parent = nullptr);
-
-public slots:
-    QString& SetDate();
+    QString& GetCurrentDate();
 
 private:
     QString dateText;

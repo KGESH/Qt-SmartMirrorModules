@@ -7,7 +7,7 @@ Date::Date(QObject *parent)
 {
 }
 
-QString& Date::SetDate()
+QString& Date::GetCurrentDate()
 {
     auto date = QDate::currentDate();
     dateText = date.toString("yyyy년MM월dd일");

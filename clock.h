@@ -11,9 +11,7 @@ class Clock : public QObject
 
 public:
     explicit Clock(QObject *parent = 0);
-
-public slots:
-    QString& SetTime();
+    QString& GetCurrentTime();
 
 private:
     QString timeText;
