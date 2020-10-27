@@ -8,12 +8,15 @@ class Clock : public QObject
 {
     Q_OBJECT
 
+
 public:
     explicit Clock(QObject *parent = 0);
 
-
 public slots:
-    QString SetTime() const;
+    QString& SetTime();
+
+private:
+    QString timeText;
 };
 
 #endif // CLOCK_H

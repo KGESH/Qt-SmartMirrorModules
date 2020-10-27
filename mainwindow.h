@@ -30,7 +30,7 @@ public slots:
 
 
 private:
-    const QFont TIME_FONT;
+    const QFont FONT;
     Clock *clock_;
     Date *date_;
 

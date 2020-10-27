@@ -1,14 +1,16 @@
 #include "clock.h"
 #include <QTimer>
 #include <QTime>
+
+
 Clock::Clock(QObject *parent)
     :QObject(parent)
 {
 }
 
-QString Clock::SetTime() const{
+QString& Clock::SetTime(){
     auto time = QTime::currentTime();
-    QString timeText = time.toString("hh : mm");
+    timeText = time.toString("hh : mm ap");     // AM PM
 
     return timeText;
 }
