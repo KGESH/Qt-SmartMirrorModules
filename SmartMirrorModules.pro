@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,12 +19,14 @@ SOURCES += \
     clock.cpp \
     date.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    newsheadline.cpp
 
 HEADERS += \
     clock.h \
     date.h \
-    mainwindow.h
+    mainwindow.h \
+    newsheadline.h
 
 FORMS += \
     mainwindow.ui

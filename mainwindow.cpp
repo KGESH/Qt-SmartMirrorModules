@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     clock_ = new Clock(this);
     date_ = new Date(this);
+    news_ = new NewsHeadLine(this);
     auto timer = new QTimer(this);
 
     ui->setupUi(this);
