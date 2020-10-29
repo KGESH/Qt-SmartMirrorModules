@@ -13,7 +13,7 @@ public:
     QString& GetCurrentTime();
 
 private:
-    QString timeText;
+    QString timeText_;
 };
 
 #endif // CLOCK_H

@@ -3,7 +3,7 @@
 #include <QTimer>
 
 
-const int FONT_SIZE = 30;
+const int FONT_SIZE = 20;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -20,11 +20,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->ui_date->setFont(FONT);
 
 
-
     connect(timer, SIGNAL(timeout()), SLOT(ShowTime()));
     connect(timer, SIGNAL(timeout()), SLOT(ShowDate()));
     timer->start(1000); // 1000 ms == 1sec
 }
+
 
 MainWindow::~MainWindow()
 {
@@ -41,4 +41,12 @@ void MainWindow::ShowTime()
 void MainWindow::ShowDate()
 {
     ui->ui_date->setText(date_->GetCurrentDate());
+}
+
+
+void MainWindow::ShowNewsHeadLine()
+{
+    QStringList news_list = news_->GetNewsList();
+    QString str = news_list.join("\n");
+    ui->ui_time->setText(str);
 }

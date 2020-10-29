@@ -9,10 +9,11 @@ Clock::Clock(QObject *parent)
 {
 }
 
+
 QString& Clock::GetCurrentTime()
 {
     auto time = QTime::currentTime();
-    timeText = time.toString("hh : mm : ss ap");     // AM PM
+    timeText_ = time.toString("hh : mm : ss ap");     // AM PM
 
-    return timeText;
+    return timeText_;
 }

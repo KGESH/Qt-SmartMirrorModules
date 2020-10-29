@@ -13,7 +13,7 @@ public:
     QString& GetCurrentDate();
 
 private:
-    QString dateText;
+    QString dateText_;
 };
 
 #endif // DATE_H

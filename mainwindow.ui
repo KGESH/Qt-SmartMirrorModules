@@ -40,6 +40,19 @@
      <string>Date</string>
     </property>
    </widget>
+   <widget class="QLabel" name="ui_news">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>370</y>
+      <width>231</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>NewsHeadLine</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

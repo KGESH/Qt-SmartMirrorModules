@@ -4,32 +4,26 @@
 
 #include <QObject>
 #include <QtNetwork/QNetworkReply>
-#include <QUrl>
-#include <QUrlQuery>
 
-const QString API_ID = "J0Q3Ych2sPVVdjbwLVgH";
-const QString API_KEY = "LQPqYitIxk";
+
+const QString REQUEST_URL =  "https://openapi.naver.com/v1/search/news.json";
 
 class NewsHeadLine : public QObject
 {
     Q_OBJECT
 public:
     explicit NewsHeadLine(QObject *parent = nullptr);
+    QStringList& GetNewsList();
 
 public slots:
     void RequestNews(QNetworkReply* reply);
 
-
-
-
 private:
 
-    QString request_url_ = "https://openapi.naver.com/v1/search/news.json";
+    QString request_url_ = REQUEST_URL;
     QNetworkAccessManager *network_manager_;
-    QNetworkReply *network_reply;
-
-
-
+    QNetworkReply *network_reply_;
+    QStringList news_list_;
 };
 
 #endif // NEWSHEADLINE_H

@@ -29,6 +29,7 @@ public:
 public slots:
     void ShowTime();
     void ShowDate();
+    void ShowNewsHeadLine();
 
 
 private:

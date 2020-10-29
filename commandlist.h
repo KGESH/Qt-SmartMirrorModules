@@ -11,10 +11,6 @@ class CommandList : public QObject
 public:
     explicit CommandList(QObject *parent = nullptr);
 
-
-
-
-
 };
 
 #endif // COMMANDLIST_H
