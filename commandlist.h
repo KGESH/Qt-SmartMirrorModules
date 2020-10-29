@@ -3,13 +3,17 @@
 
 #include <QObject>
 
+
+
 class CommandList : public QObject
 {
     Q_OBJECT
 public:
     explicit CommandList(QObject *parent = nullptr);
 
-signals:
+
+
+
 
 };
 

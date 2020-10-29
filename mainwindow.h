@@ -35,7 +35,7 @@ private:
     const QFont FONT;
     Clock *clock_;
     Date *date_;
-    NewsHeadLine * news_;
+    NewsHeadLine *news_;
 
 
 };

@@ -3,6 +3,7 @@
 #include <QTime>
 
 
+
 Clock::Clock(QObject *parent)
     :QObject(parent)
 {
@@ -11,7 +12,7 @@ Clock::Clock(QObject *parent)
 QString& Clock::GetCurrentTime()
 {
     auto time = QTime::currentTime();
-    timeText = time.toString("hh : mm ap");     // AM PM
+    timeText = time.toString("hh : mm : ss ap");     // AM PM
 
     return timeText;
 }

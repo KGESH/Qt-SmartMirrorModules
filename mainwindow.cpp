@@ -12,7 +12,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     clock_ = new Clock(this);
     date_ = new Date(this);
-    news_ = new NewsHeadLine(this);
     auto timer = new QTimer(this);
 
     ui->setupUi(this);
@@ -21,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(timer, SIGNAL(timeout()), SLOT(ShowTime()));
     connect(timer, SIGNAL(timeout()), SLOT(ShowDate()));
-    timer->start(1000);
+    timer->start(1000); // 1000 ms == 1sec
 }
 
 MainWindow::~MainWindow()

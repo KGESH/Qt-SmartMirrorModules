@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     clock.cpp \
+    commandlist.cpp \
     date.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -24,6 +25,7 @@ SOURCES += \
 
 HEADERS += \
     clock.h \
+    commandlist.h \
     date.h \
     mainwindow.h \
     newsheadline.h
