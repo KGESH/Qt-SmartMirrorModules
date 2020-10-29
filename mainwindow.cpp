@@ -12,11 +12,14 @@ MainWindow::MainWindow(QWidget *parent)
 {
     clock_ = new Clock(this);
     date_ = new Date(this);
+    news_ = new NewsHeadLine(this);
     auto timer = new QTimer(this);
 
     ui->setupUi(this);
     ui->ui_time->setFont(FONT);
     ui->ui_date->setFont(FONT);
+
+
 
     connect(timer, SIGNAL(timeout()), SLOT(ShowTime()));
     connect(timer, SIGNAL(timeout()), SLOT(ShowDate()));

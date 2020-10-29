@@ -15,8 +15,11 @@ class NewsHeadLine : public QObject
     Q_OBJECT
 public:
     explicit NewsHeadLine(QObject *parent = nullptr);
-    void RequestNews();
-signals:
+
+public slots:
+    void RequestNews(QNetworkReply* reply);
+
+
 
 
 private:

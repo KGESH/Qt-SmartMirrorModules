@@ -1,23 +1,39 @@
 #include "newsheadline.h"
-
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
 NewsHeadLine::NewsHeadLine(QObject *parent) : QObject(parent)
 {
     network_manager_ = new QNetworkAccessManager(this);
     QUrl url(request_url_);
+    QNetworkRequest request(url);
+    request.setRawHeader("X-Naver-Client-Id", "J0Q3Ych2sPVVdjbwLVgH");
+    request.setRawHeader("X-Naver-Client-Secret", "LQPqYitIxk");
     QUrlQuery query;
-    //query.addQueryItem(API_ID, API_KEY);
 
 
-    query.addQueryItem("X-Naver-Client-Id", API_ID);
-    query.addQueryItem("X-Naver-Client-Secret", API_KEY);
+    network_reply = network_manager_->get(request);
+    connect(network_reply, SIGNAL(finished(network_reply)),this, SLOT(RequestNews(network_reply)));
 
-    url.setQuery(query);
-    network_reply = network_manager_->get(QNetworkRequest(url));
 
 }
 
 
-void NewsHeadLine::RequestNews()
+void NewsHeadLine::RequestNews(QNetworkReply* reply)
 {
+
+    if (reply->error()) {
+            qDebug() << reply->errorString();
+            return;
+        }
+        QJsonDocument jd;
+        jd =  QJsonDocument::fromJson(reply->readAll());
+        QJsonObject jo = jd.object();
+     //   QJsonArray ja = jo[""].toArray();
+        qDebug() << jo[""].toString();
+
+
+        //QString answer = reply->readAll();
+
 
 }
