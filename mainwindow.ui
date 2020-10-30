@@ -45,12 +45,22 @@
      <rect>
       <x>10</x>
       <y>240</y>
-      <width>571</width>
+      <width>481</width>
       <height>321</height>
      </rect>
     </property>
     <property name="text">
      <string>NewsHeadLine</string>
+    </property>
+   </widget>
+   <widget class="QChartView" name="ui_covid19">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>190</y>
+      <width>256</width>
+      <height>192</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -66,6 +76,13 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QGraphicsView</extends>
+   <header>QtCharts</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

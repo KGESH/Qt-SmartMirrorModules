@@ -20,6 +20,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->ui_date->setFont(FONT);
 
 
+
+
     connect(timer, SIGNAL(timeout()), SLOT(ShowNewsHeadLine()));
     connect(timer, SIGNAL(timeout()), SLOT(ShowTime()));
     connect(timer, SIGNAL(timeout()), SLOT(ShowDate()));

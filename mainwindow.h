@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtCharts/QtCharts>
 #include "clock.h"
 #include "date.h"
 #include "newsheadline.h"
