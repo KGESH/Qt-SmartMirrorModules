@@ -21,8 +21,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     connect(timer, SIGNAL(timeout()), SLOT(ShowNewsHeadLine()));
-   // connect(timer, SIGNAL(timeout()), SLOT(ShowTime()));
-   // connect(timer, SIGNAL(timeout()), SLOT(ShowDate()));
+    connect(timer, SIGNAL(timeout()), SLOT(ShowTime()));
+    connect(timer, SIGNAL(timeout()), SLOT(ShowDate()));
     timer->start(1000); // 1000 ms == 1sec
 }
 
