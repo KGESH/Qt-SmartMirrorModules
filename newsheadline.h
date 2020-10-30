@@ -16,11 +16,9 @@ public:
     QStringList& GetNewsList();
 
 public slots:
-    void RequestNews(QNetworkReply* reply);
+    void RequestNews();
 
 private:
-
-    QString request_url_ = REQUEST_URL;
     QNetworkAccessManager *network_manager_;
     QNetworkReply *network_reply_;
     QStringList news_list_;

@@ -29,7 +29,7 @@ NewsHeadLine::NewsHeadLine(QObject *parent) : QObject(parent)
     query.addQueryItem(SEARCH_OPTION, SEARCH_START_POINT);
     query.addQueryItem(ENABLE_SORT_OPTION, SORT_POLICY);
 
-    QUrl url(request_url_);
+    QUrl url(REQUEST_URL);
     url.setQuery(query);
 
     QNetworkRequest request(url);
@@ -37,23 +37,18 @@ NewsHeadLine::NewsHeadLine(QObject *parent) : QObject(parent)
     request.setRawHeader(API_SCRET.toUtf8(), API_SCRET_KEY.toUtf8());
 
     network_reply_ = network_manager_->get(request);
-
-    QEventLoop loop;
-    connect(network_reply_, SIGNAL(finished()), &loop, SLOT(quit()));
-    loop.exec();
-
-    RequestNews(network_reply_);
+    connect(network_reply_, SIGNAL(finished()), this, SLOT(RequestNews()));
 }
 
 
-void NewsHeadLine::RequestNews(QNetworkReply* reply)
+void NewsHeadLine::RequestNews()
 {
-    if (reply->error()) {
-            qDebug() << reply->errorString();
+    if (network_reply_->error()) {
+            qDebug() << network_reply_->errorString();
             return;
     }
 
-    QByteArray data = reply->readAll();
+    QByteArray data = network_reply_->readAll();
     QJsonDocument json_doc(QJsonDocument::fromJson(data));
     QJsonObject json_reply = json_doc.object();
     QJsonArray title = json_reply["items"].toArray();
@@ -64,8 +59,8 @@ void NewsHeadLine::RequestNews(QNetworkReply* reply)
         qDebug() << str;
     }
 
-    reply->close();
-    reply->deleteLater();
+    network_reply_->close();
+    network_reply_->deleteLater();
 }
 
 

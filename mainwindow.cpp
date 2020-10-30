@@ -20,8 +20,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->ui_date->setFont(FONT);
 
 
-    connect(timer, SIGNAL(timeout()), SLOT(ShowTime()));
-    connect(timer, SIGNAL(timeout()), SLOT(ShowDate()));
+    connect(timer, SIGNAL(timeout()), SLOT(ShowNewsHeadLine()));
+   // connect(timer, SIGNAL(timeout()), SLOT(ShowTime()));
+   // connect(timer, SIGNAL(timeout()), SLOT(ShowDate()));
     timer->start(1000); // 1000 ms == 1sec
 }
 
@@ -46,7 +47,8 @@ void MainWindow::ShowDate()
 
 void MainWindow::ShowNewsHeadLine()
 {
+
     QStringList news_list = news_->GetNewsList();
-    QString str = news_list.join("\n");
-    ui->ui_time->setText(str);
+    QString str = news_list.join("\n"); // concat String by \n
+    ui->ui_news->setText(str);
 }
