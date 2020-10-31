@@ -6,6 +6,8 @@
 #include <QJsonArray>
 #include <QEventLoop>
 
+
+const QString REQUEST_URL =  "https://openapi.naver.com/v1/search/news.json";
 const QString API_ID = "X-Naver-Client-Id";
 const QString API_ID_KEY = "J0Q3Ych2sPVVdjbwLVgH";
 const QString API_SCRET = "X-Naver-Client-Secret";
