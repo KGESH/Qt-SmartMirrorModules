@@ -13,11 +13,13 @@ MainWindow::MainWindow(QWidget *parent)
     clock_ = new Clock(this);
     date_ = new Date(this);
     news_ = new NewsHeadLine(this);
+    covid19_graph_view_ = new Covid19Graph(this);
     auto timer = new QTimer(this);
 
     ui->setupUi(this);
     ui->ui_time->setFont(FONT);
     ui->ui_date->setFont(FONT);
+    ui->ui_covid19->setChart(covid19_graph_view_->GetGraph());
 
 
 

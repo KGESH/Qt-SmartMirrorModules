@@ -6,10 +6,12 @@
 #include "clock.h"
 #include "date.h"
 #include "newsheadline.h"
+#include "covid19graph.h"
 
 class Clock;
 class Date;
 class NewsHeadLine;
+class Covid19Graph;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -38,6 +40,8 @@ private:
     Clock *clock_;
     Date *date_;
     NewsHeadLine *news_;
+    Covid19Graph *covid19_graph_view_;
+
 
 
 };
