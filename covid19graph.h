@@ -22,8 +22,10 @@ private:
     QCategoryAxis *axisX_ = nullptr;
     QCategoryAxis *axisY_ = nullptr;
     QChartView *graphView_ = nullptr;
-    QStringList testList = {"10/25", "10/26", "10/27", "10/28", "10/29", "10/30", "10/31" };
+    QStringList testList = { "10/25", "10/26", "10/27", "10/28", "10/29", "10/30", "10/31" };
     QFont graph_font_;
+    QStringList confirmed_person_count = { "20", "40", "60", "80", "100" };
+
 
 
 

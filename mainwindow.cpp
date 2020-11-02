@@ -3,7 +3,7 @@
 #include <QTimer>
 
 
-const int FONT_SIZE = 20;
+const int FONT_SIZE = 30;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -17,12 +17,10 @@ MainWindow::MainWindow(QWidget *parent)
     auto timer = new QTimer(this);
 
     ui->setupUi(this);
+    ui->ui_myfeel_text->setFont(FONT);
     ui->ui_time->setFont(FONT);
     ui->ui_date->setFont(FONT);
     ui->ui_covid19->setChart(covid19_graph_view_->GetGraph());
-
-
-
 
     connect(timer, SIGNAL(timeout()), SLOT(ShowNewsHeadLine()));
     connect(timer, SIGNAL(timeout()), SLOT(ShowTime()));
