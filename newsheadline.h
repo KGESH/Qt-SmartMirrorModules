@@ -6,8 +6,6 @@
 #include <QtNetwork/QNetworkReply>
 
 
-const QString REQUEST_URL =  "https://openapi.naver.com/v1/search/news.json";
-
 class NewsHeadLine : public QObject
 {
     Q_OBJECT
