@@ -9,6 +9,7 @@ Covid19Graph::Covid19Graph(QObject *parent)
     , graphView_(new QChartView)
 
 {
+    graph_font_.setPixelSize(18);
      UpdateGraph(testList);
 }
 
@@ -21,6 +22,7 @@ void Covid19Graph::UpdateGraph(const QStringList& date_list)
 
     chart_ = new QChart();
     chart_->setTitle("Cvoid19 Graph");
+    chart_->setTitleFont(graph_font_);
     *graph_ << QPointF(0, 20) << QPointF(1, 34) << QPointF(2, 50) << QPointF(3, 60) << QPointF(4,23)
             << QPointF(5, 12) << QPointF(6,20);
     chart_->addSeries(graph_);
@@ -44,6 +46,7 @@ QChart* Covid19Graph::GetGraph()
 void Covid19Graph::SetAxisX(const QStringList& date_list)
 {
     int i = 0;
+    axisX_->setLabelsFont(graph_font_);
     foreach(const QString& date, date_list){
         axisX_->append(date, i++);
     }
@@ -54,6 +57,7 @@ void Covid19Graph::SetAxisX(const QStringList& date_list)
 void Covid19Graph::SetAxisY()
 {
     QStringList confirmed_person_count = {"20", "40", "60", "80", "100"};
+    axisX_->setLabelsFont(graph_font_);
 
     foreach(const QString& person_count, confirmed_person_count){
         axisY_->append(person_count, person_count.toInt());

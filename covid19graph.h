@@ -23,6 +23,7 @@ private:
     QCategoryAxis *axisY_ = nullptr;
     QChartView *graphView_ = nullptr;
     QStringList testList = {"10/25", "10/26", "10/27", "10/28", "10/29", "10/30", "10/31" };
+    QFont graph_font_;
 
 
 
