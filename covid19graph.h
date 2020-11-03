@@ -3,26 +3,32 @@
 
 #include <QObject>
 #include <QtCharts>
+#include <QDate>
+
+
 class Covid19Graph : public QObject
 {
     Q_OBJECT
 public:
     explicit Covid19Graph(QObject *parent = nullptr);
     QChart* GetGraph();
+    void UpdateGraph();
 
 
 
 private:
-    void UpdateGraph(const QStringList& date_list);
-    void SetAxisX(const QStringList& date_list);
+    void SetAxisX();
     void SetAxisY();
+    void CustomizeGraph();
+    void SetRecentlyDateList();
+    void SetConfirmedPerson();
 
     QChart *chart_ = nullptr;
     QLineSeries *graph_ = nullptr;
     QCategoryAxis *axisX_ = nullptr;
     QCategoryAxis *axisY_ = nullptr;
     QChartView *graphView_ = nullptr;
-    QStringList testList = { "10/25", "10/26", "10/27", "10/28", "10/29", "10/30", "10/31" };
+    QList<QDate> recently_date_list_;
     QFont graph_font_;
     QStringList confirmed_person_count = { "20", "40", "60", "80", "100" };
 
