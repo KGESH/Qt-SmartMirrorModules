@@ -4,7 +4,6 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
-#include <QEventLoop>
 
 
 const QString REQUEST_URL =  "https://openapi.naver.com/v1/search/news.json";

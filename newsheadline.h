@@ -13,7 +13,7 @@ public:
     explicit NewsHeadLine(QObject *parent = nullptr);
     QStringList& GetNewsList();
 
-public slots:
+private slots:
     void RequestNews();
 
 private:

@@ -1,4 +1,4 @@
-QT       += core gui network charts
+QT       += core gui network charts xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     clock.cpp \
     commandlist.cpp \
+    covid19data.cpp \
     covid19graph.cpp \
     date.cpp \
     main.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
 HEADERS += \
     clock.h \
     commandlist.h \
+    covid19data.h \
     covid19graph.h \
     date.h \
     mainwindow.h \
