@@ -28,7 +28,6 @@ MainWindow::MainWindow(QWidget *parent)
     timer->start(1000); // 1000 ms == 1sec
 }
 
-
 MainWindow::~MainWindow()
 {
     delete ui;

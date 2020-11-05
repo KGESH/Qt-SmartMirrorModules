@@ -4,7 +4,9 @@
 #include <QObject>
 #include <QtCharts>
 #include <QDate>
+#include "covid19data.h"
 
+class Covid19Data;
 
 class Covid19Graph : public QObject
 {
@@ -22,7 +24,9 @@ private:
     void CustomizeGraph();
     void SetRecentlyDateList();
     void SetConfirmedPerson();
+    void SetCovid19Data();
 
+    Covid19Data *covid_data_ = nullptr;
     QChart *chart_ = nullptr;
     QLineSeries *graph_ = nullptr;
     QCategoryAxis *axisX_ = nullptr;
