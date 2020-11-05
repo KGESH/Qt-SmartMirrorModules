@@ -18,6 +18,13 @@
     <item row="8" column="1">
      <widget class="QChartView" name="ui_covid19"/>
     </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="ui_news">
+      <property name="text">
+       <string>NewsHeadLine</string>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="0">
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
@@ -42,13 +49,6 @@
        </widget>
       </item>
      </layout>
-    </item>
-    <item row="8" column="0">
-     <widget class="QLabel" name="ui_news">
-      <property name="text">
-       <string>NewsHeadLine</string>
-      </property>
-     </widget>
     </item>
    </layout>
   </widget>
