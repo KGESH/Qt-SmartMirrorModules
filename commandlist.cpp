@@ -5,3 +5,10 @@ CommandList::CommandList(QObject *parent) : QObject(parent)
 {
 
 }
+
+
+QStringList& CommandList::GetCmdList()
+{
+    return CmdList;
+}
+

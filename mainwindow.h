@@ -7,11 +7,13 @@
 #include "date.h"
 #include "newsheadline.h"
 #include "covid19graph.h"
+#include "commandlist.h"
 
 class Clock;
 class Date;
 class NewsHeadLine;
 class Covid19Graph;
+class CommandList;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,12 +32,14 @@ public:
 
 
 public slots:
+    void ShowCmdList();
     void ShowTime();
     void ShowDate();
     void ShowNewsHeadLine();
 
 
 private:
+    CommandList *cmd_list_;
     const QFont FONT;
     Clock *clock_;
     Date *date_;

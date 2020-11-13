@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     clock_ = new Clock(this);
     date_ = new Date(this);
     news_ = new NewsHeadLine(this);
+    cmd_list_ = new CommandList(this);
     covid19_graph_view_ = new Covid19Graph(this);
     auto timer = new QTimer(this);
 
@@ -21,12 +22,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui->ui_time->setFont(FONT);
     ui->ui_date->setFont(FONT);
     ui->ui_covid19->setChart(covid19_graph_view_->GetGraph());
+    ui->ui_cmd_list->setFont(FONT);
 
     connect(timer, SIGNAL(timeout()), SLOT(ShowNewsHeadLine()));
     connect(timer, SIGNAL(timeout()), SLOT(ShowTime()));
     connect(timer, SIGNAL(timeout()), SLOT(ShowDate()));
+    connect(timer, SIGNAL(timeout()), SLOT(ShowCmdList()));
     timer->start(1000); // 1000 ms == 1sec
 }
+
 
 MainWindow::~MainWindow()
 {
@@ -46,9 +50,16 @@ void MainWindow::ShowDate()
 }
 
 
+void MainWindow::ShowCmdList()
+{
+    QStringList cmd_list = cmd_list_->GetCmdList();
+    QString str = cmd_list.join("\n");  // concat String by \n
+    ui->ui_cmd_list->setText(str);
+}
+
+
 void MainWindow::ShowNewsHeadLine()
 {
-
     QStringList news_list = news_->GetNewsList();
     QString str = news_list.join("\n"); // concat String by \n
     ui->ui_news->setText(str);

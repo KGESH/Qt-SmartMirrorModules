@@ -62,6 +62,7 @@ void Covid19Graph::SetRecentlyDateList()
 
 void Covid19Graph::SetConfirmedPerson()
 {
+    *graph_ << QPointF(0,30) << QPointF(1,15) << QPointF(2, 64) << QPointF(3, 53) << QPointF(4, 21) << QPointF(5, 31) << QPointF(6,55);
     int i = 0;
     QStringList& confirmed_person_count = covid_data_->GetConfirmedPersonCountList();
 
