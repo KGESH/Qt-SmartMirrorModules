@@ -57,7 +57,7 @@ void NewsHeadLine::RequestNews()
     foreach (const QJsonValue &val, title){
         QString str = val.toObject().value("title").toString();
         news_list_.append(str);
-        qDebug() << str;
+       // qDebug() << str;
     }
 
     network_reply_->close();

@@ -36,6 +36,7 @@ public slots:
     void ShowTime();
     void ShowDate();
     void ShowNewsHeadLine();
+    void UpdateCovid19Graph();
 
 
 private:

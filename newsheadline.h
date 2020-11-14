@@ -9,6 +9,7 @@
 class NewsHeadLine : public QObject
 {
     Q_OBJECT
+
 public:
     explicit NewsHeadLine(QObject *parent = nullptr);
     QStringList& GetNewsList();

@@ -9,6 +9,6 @@ CommandList::CommandList(QObject *parent) : QObject(parent)
 
 QStringList& CommandList::GetCmdList()
 {
-    return CmdList;
+    return cmd_list_;
 }
 

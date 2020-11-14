@@ -16,8 +16,7 @@ public:
 
 
 private:
-
-    QStringList CmdList = {"Hi Google", "Get Off","cmd3"}; //100000개 있음
+    QStringList cmd_list_ = {"Hi Google", "Get Off","cmd3"};
 };
 
 #endif // COMMANDLIST_H

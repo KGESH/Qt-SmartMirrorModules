@@ -12,9 +12,11 @@ const QString START_SEARCH_DATE_RANGE = "startCreateDt";
 const QString END_SEARCH_DATE_RANGE = "endCreateDt";
 
 
-Covid19Data::Covid19Data(QObject *parent) : QObject(parent)
+Covid19Data::Covid19Data(QObject *parent)
+    : QObject(parent)
 {
     network_manager_ = new QNetworkAccessManager(this);
+
     QUrlQuery query;
     query.addQueryItem(API_ID, API_KEY);
     query.addQueryItem(NUMBER_OF_RESULTS_PER_PAGE, "10");
@@ -59,10 +61,8 @@ void Covid19Data::RequestCovid19Data()
             QString name = xml.name().toString();
             if(name == "decideCnt"){    //확진자 수
                 confirmed_person_count_list_.append(xml.readElementText());
-                qDebug() << confirmed_person_count_list_;
             } else if(name == "stateDt"){   // 해당 날짜
                 date_list_.append(xml.readElementText());
-                qDebug() << date_list_;
             }
         }
     }
@@ -71,5 +71,8 @@ void Covid19Data::RequestCovid19Data()
     {
         qDebug() << "XML error: " << xml.errorString();
     }
+    qDebug() << confirmed_person_count_list_;
+    qDebug() << date_list_;
+
 
 }

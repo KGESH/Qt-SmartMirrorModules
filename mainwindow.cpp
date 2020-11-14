@@ -15,7 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
     news_ = new NewsHeadLine(this);
     cmd_list_ = new CommandList(this);
     covid19_graph_view_ = new Covid19Graph(this);
-    auto timer = new QTimer(this);
+    auto timer  = new QTimer(this);
+    auto timer2 = new QTimer(this);
 
     ui->setupUi(this);
     ui->ui_myfeel_text->setFont(FONT);
@@ -28,7 +29,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(timer, SIGNAL(timeout()), SLOT(ShowTime()));
     connect(timer, SIGNAL(timeout()), SLOT(ShowDate()));
     connect(timer, SIGNAL(timeout()), SLOT(ShowCmdList()));
+    connect(timer2, SIGNAL(timeout()), SLOT(UpdateCovid19Graph()));
     timer->start(1000); // 1000 ms == 1sec
+    timer2->start(10000);
 }
 
 
@@ -63,4 +66,9 @@ void MainWindow::ShowNewsHeadLine()
     QStringList news_list = news_->GetNewsList();
     QString str = news_list.join("\n"); // concat String by \n
     ui->ui_news->setText(str);
+}
+
+void MainWindow::UpdateCovid19Graph()
+{
+    covid19_graph_view_->UpdateGraph();
 }

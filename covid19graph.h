@@ -6,6 +6,7 @@
 #include <QDate>
 #include "covid19data.h"
 
+
 class Covid19Data;
 
 class Covid19Graph : public QObject
@@ -25,6 +26,7 @@ private:
     void SetRecentlyDateList();
     void SetConfirmedPerson();
     void SetCovid19Data();
+
 
     Covid19Data *covid_data_ = nullptr;
     QChart *chart_ = nullptr;

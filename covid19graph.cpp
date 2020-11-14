@@ -1,23 +1,15 @@
 #include "covid19graph.h"
 
-
 Covid19Graph::Covid19Graph(QObject *parent)
     : QObject(parent)
+    , covid_data_(new Covid19Data(this))
     , graph_(new QLineSeries)
     , axisX_(new QCategoryAxis)
     , axisY_(new QCategoryAxis)
     , graphView_(new QChartView)
 {
-
-    SetCovid19Data();
     graph_font_.setPixelSize(18);
     UpdateGraph();
-}
-
-
-void Covid19Graph::SetCovid19Data()
-{
-    covid_data_ = new Covid19Data(this);
 }
 
 
@@ -62,9 +54,10 @@ void Covid19Graph::SetRecentlyDateList()
 
 void Covid19Graph::SetConfirmedPerson()
 {
-    *graph_ << QPointF(0,30) << QPointF(1,15) << QPointF(2, 64) << QPointF(3, 53) << QPointF(4, 21) << QPointF(5, 31) << QPointF(6,55);
+   // *graph_ << QPointF(0,30) << QPointF(1,15) << QPointF(2, 64) << QPointF(3, 53) << QPointF(4, 21) << QPointF(5, 31) << QPointF(6,55);
     int i = 0;
     QStringList& confirmed_person_count = covid_data_->GetConfirmedPersonCountList();
+    qDebug() << confirmed_person_count;
 
     foreach(const QString& person_list, confirmed_person_count){
         *graph_ << QPointF(i++, person_list.toInt());
