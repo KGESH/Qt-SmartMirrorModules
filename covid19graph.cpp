@@ -3,32 +3,38 @@
 Covid19Graph::Covid19Graph(QObject *parent)
     : QObject(parent)
     , covid_data_(new Covid19Data(this))
+    , chart_(new QChart())
     , graph_(new QLineSeries)
-    , axisX_(new QCategoryAxis)
-    , axisY_(new QCategoryAxis)
     , graphView_(new QChartView)
 {
     graph_font_.setPixelSize(18);
-    UpdateGraph();
+    SetConfirmedPerson();
+    CustomizeGraph();
+    chart_->addSeries(graph_);
+    SetRecentlyDateList();
+    SetAxisX();
+    SetAxisY();
+    chart_->addAxis(axisX_, Qt::AlignLeft);
+    chart_->addAxis(axisY_, Qt::AlignBottom);
+
+    //graph_->attachAxis(axisX_);
+   // graph_->attachAxis(axisY_);
 }
 
 
 void Covid19Graph::UpdateGraph()
 {
-    if (chart_ != nullptr){
-        delete chart_;
-    }
-
-    chart_ = new QChart();
-    CustomizeGraph();
+    auto chart = new QChart();
     SetConfirmedPerson();
-
     chart_->addSeries(graph_);
     SetRecentlyDateList();
     SetAxisX();
     SetAxisY();
-    graph_->attachAxis(axisX_);
-    graph_->attachAxis(axisY_);
+    chart_->addAxis(axisY_, Qt::AlignBottom);
+    chart_->addAxis(axisY_, Qt::AlignBottom);
+
+    chart_ = chart;
+    delete chart;
 }
 
 
@@ -54,38 +60,56 @@ void Covid19Graph::SetRecentlyDateList()
 
 void Covid19Graph::SetConfirmedPerson()
 {
-   // *graph_ << QPointF(0,30) << QPointF(1,15) << QPointF(2, 64) << QPointF(3, 53) << QPointF(4, 21) << QPointF(5, 31) << QPointF(6,55);
     int i = 0;
     QStringList& confirmed_person_count = covid_data_->GetConfirmedPersonCountList();
-    qDebug() << confirmed_person_count;
+    //qDebug() << confirmed_person_count;
 
     foreach(const QString& person_list, confirmed_person_count){
-        *graph_ << QPointF(i++, person_list.toInt());
+        *graph_ << QPointF(i++, person_list.toInt() % 100);
     }
 }
 
 
 void Covid19Graph::SetAxisX()
 {
+    if(axisX_ != nullptr){
+        graph_->detachAxis(axisX_);
+        delete axisX_;
+    }
+
+    axisX_ = new QCategoryAxis();
     int i = 0;
     axisX_->setLabelsFont(graph_font_);
     foreach(const QDate& date, recently_date_list_){
         axisX_->append(date.toString("MM월 dd일"), i++);
     }
+
     axisX_->setRange(0, --i);
-    chart_->addAxis(axisX_, Qt::AlignBottom);
+    graph_->attachAxis(axisX_);
+    //chart_->setAxisX(axisX_, graph_);
+
 }
 
 
 void Covid19Graph::SetAxisY()
 {
+    if(axisY_ != nullptr){
+        graph_->detachAxis(axisY_);
+        delete axisY_;
+    }
+    axisY_ = new QCategoryAxis();
+
     axisY_->setLabelsFont(graph_font_);
 
     foreach(const QString& person_count, confirmed_person_count){
         axisY_->append(person_count, person_count.toInt());
     }
     axisY_->setRange(0, confirmed_person_count.back().toInt());
-    chart_->addAxis(axisY_, Qt::AlignLeft);
+    graph_->attachAxis(axisY_);
+
+    //chart_->addAxis(axisY_, Qt::AlignLeft);
+   // chart_->setAxisY(axisY_, graph_);
+
 }
 
 

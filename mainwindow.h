@@ -40,10 +40,10 @@ public slots:
 
 
 private:
-    CommandList *cmd_list_;
     const QFont FONT;
     Clock *clock_;
     Date *date_;
+    CommandList *cmd_list_;
     NewsHeadLine *news_;
     Covid19Graph *covid19_graph_view_;
 

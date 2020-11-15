@@ -2,6 +2,7 @@
 #include <QUrl>
 #include <QUrlQuery>
 #include <QXmlStreamReader>
+#include <QEventLoop>
 
 const QString REQUEST_URL = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson";
 const QString API_ID = "serviceKey";
@@ -29,7 +30,10 @@ Covid19Data::Covid19Data(QObject *parent)
 
     QNetworkRequest request(url);
     network_reply_ = network_manager_->get(request);
-    connect(network_reply_, SIGNAL(finished()), this, SLOT(RequestCovid19Data()));
+    QEventLoop loop;
+    connect(network_reply_, SIGNAL(finished()), &loop, SLOT(quit()));
+    loop.exec();
+    RequestCovid19Data();
 }
 
 
@@ -71,8 +75,6 @@ void Covid19Data::RequestCovid19Data()
     {
         qDebug() << "XML error: " << xml.errorString();
     }
-    qDebug() << confirmed_person_count_list_;
-    qDebug() << date_list_;
 
 
 }

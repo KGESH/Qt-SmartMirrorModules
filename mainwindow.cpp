@@ -9,12 +9,12 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , FONT("Arial", FONT_SIZE, QFont::Bold)
+    , clock_(new Clock(this))
+    , date_(new Date(this))
+    , cmd_list_(new CommandList(this))
+    , news_(new NewsHeadLine(this))
+    , covid19_graph_view_(new Covid19Graph(this))
 {
-    clock_ = new Clock(this);
-    date_ = new Date(this);
-    news_ = new NewsHeadLine(this);
-    cmd_list_ = new CommandList(this);
-    covid19_graph_view_ = new Covid19Graph(this);
     auto timer  = new QTimer(this);
     auto timer2 = new QTimer(this);
 
@@ -22,8 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->ui_myfeel_text->setFont(FONT);
     ui->ui_time->setFont(FONT);
     ui->ui_date->setFont(FONT);
-    ui->ui_covid19->setChart(covid19_graph_view_->GetGraph());
     ui->ui_cmd_list->setFont(FONT);
+    ui->ui_covid19->setChart(covid19_graph_view_->GetGraph());
 
     connect(timer, SIGNAL(timeout()), SLOT(ShowNewsHeadLine()));
     connect(timer, SIGNAL(timeout()), SLOT(ShowTime()));
@@ -31,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(timer, SIGNAL(timeout()), SLOT(ShowCmdList()));
     connect(timer2, SIGNAL(timeout()), SLOT(UpdateCovid19Graph()));
     timer->start(1000); // 1000 ms == 1sec
-    timer2->start(10000);
+    timer2->start(3000);
 }
 
 
@@ -71,4 +71,6 @@ void MainWindow::ShowNewsHeadLine()
 void MainWindow::UpdateCovid19Graph()
 {
     covid19_graph_view_->UpdateGraph();
+    ui->ui_covid19->setChart(covid19_graph_view_->GetGraph());
+
 }

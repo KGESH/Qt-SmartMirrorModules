@@ -39,8 +39,6 @@ private:
     QStringList confirmed_person_count = { "20", "40", "60", "80", "100" };
 
 
-
-
 };
 
 #endif // COVID19GRAPH_H
