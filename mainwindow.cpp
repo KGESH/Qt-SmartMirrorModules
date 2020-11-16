@@ -71,6 +71,6 @@ void MainWindow::ShowNewsHeadLine()
 void MainWindow::UpdateCovid19Graph()
 {
     covid19_graph_view_->UpdateGraph();
-    ui->ui_covid19->setChart(covid19_graph_view_->GetGraph());
+    //ui->ui_covid19->setChart(covid19_graph_view_->GetGraph());
 
 }

@@ -37,6 +37,7 @@ private:
     QList<QDate> recently_date_list_;
     QFont graph_font_;
     QStringList confirmed_person_count = { "20", "40", "60", "80", "100" };
+    int update_value = 0;
 
 
 };

@@ -1,4 +1,6 @@
 #include "covid19graph.h"
+#include <QListIterator>
+#include <QList>
 
 Covid19Graph::Covid19Graph(QObject *parent)
     : QObject(parent)
@@ -14,27 +16,15 @@ Covid19Graph::Covid19Graph(QObject *parent)
     SetRecentlyDateList();
     SetAxisX();
     SetAxisY();
-   // chart_->addAxis(axisX_, Qt::AlignLeft);
-    //chart_->addAxis(axisY_, Qt::AlignBottom);
-
-   // graph_->attachAxis(axisX_);
-    //graph_->attachAxis(axisY_);
 }
 
 
 void Covid19Graph::UpdateGraph()
 {
-    auto chart = new QChart();
-    graph_ = new QLineSeries();
-
-
-    //graph_->clear();
     SetConfirmedPerson();
-    chart->addSeries(graph_);
     SetRecentlyDateList();
-
-
-
+    SetAxisX();
+    SetAxisY();
 }
 
 
@@ -50,22 +40,29 @@ void Covid19Graph::CustomizeGraph()
 
 void Covid19Graph::SetRecentlyDateList()
 {
+    if(!recently_date_list_.isEmpty()){
+        recently_date_list_.clear();
+    }
+
     QStringList& date_list = covid_data_->GetDateList();
 
     foreach(const QString& date, date_list){  // insert 7days covid19
-        recently_date_list_.append(QDate::fromString(date,"yyyyMMdd"));
+        recently_date_list_.push_front(QDate::fromString(date,"yyyyMMdd")); // not append, need reverse
     }
 }
 
 
 void Covid19Graph::SetConfirmedPerson()
 {
+    if(graph_->count() > 0){    // if is not empty
+        graph_->clear();
+    }
+
     int i = 0;
     QStringList& confirmed_person_count = covid_data_->GetConfirmedPersonCountList();
-    //qDebug() << confirmed_person_count;
 
     foreach(const QString& person_list, confirmed_person_count){
-        *graph_ << QPointF(i++, person_list.toInt() % 100);
+        *graph_ << QPointF(i++, person_list.toInt() % 100 + update_value++);    // update checking test value
     }
 }
 
@@ -73,19 +70,17 @@ void Covid19Graph::SetConfirmedPerson()
 void Covid19Graph::SetAxisX()
 {
     if(axisX_ != nullptr){
-        //graph_->detachAxis(axisX_);
-        //chart_->removeAxis(axisX_);
-
         delete axisX_;
     }
 
-    axisX_ = new QCategoryAxis();
     int i = 0;
+    axisX_ = new QCategoryAxis();
     axisX_->setLabelsFont(graph_font_);
+
     foreach(const QDate& date, recently_date_list_){
         axisX_->append(date.toString("MM월 dd일"), i++);
-        qDebug() << date.toString("MM월 dd일");
     }
+
     axisX_->setRange(0, --i);
     chart_->addAxis(axisX_,Qt::AlignBottom);
 }
@@ -94,20 +89,18 @@ void Covid19Graph::SetAxisX()
 void Covid19Graph::SetAxisY()
 {
     if(axisY_ != nullptr){
-        //graph_->detachAxis(axisY_);
-        //chart_->removeAxis(axisY_);
         delete axisY_;
     }
-    axisY_ = new QCategoryAxis();
 
+    axisY_ = new QCategoryAxis();
     axisY_->setLabelsFont(graph_font_);
 
     foreach(const QString& person_count, confirmed_person_count){
         axisY_->append(person_count, person_count.toInt());
     }
+
     axisY_->setRange(0, confirmed_person_count.back().toInt());
     chart_->addAxis(axisY_, Qt::AlignLeft);
-
 }
 
 
