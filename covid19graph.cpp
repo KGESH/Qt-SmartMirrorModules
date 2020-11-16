@@ -50,10 +50,10 @@ void Covid19Graph::CustomizeGraph()
 
 void Covid19Graph::SetRecentlyDateList()
 {
-    QDate today = QDate::currentDate();
+    QStringList& date_list = covid_data_->GetDateList();
 
-    for(int i= -6; i <= 0; i++){
-        recently_date_list_.append(today.addDays(i));   // insert recently 7days
+    foreach(const QString& date, date_list){  // insert 7days covid19
+        recently_date_list_.append(QDate::fromString(date,"yyyyMMdd"));
     }
 }
 
@@ -82,6 +82,7 @@ void Covid19Graph::SetAxisX()
     axisX_->setLabelsFont(graph_font_);
     foreach(const QDate& date, recently_date_list_){
         axisX_->append(date.toString("MM월 dd일"), i++);
+        qDebug() << date.toString("MM월 dd일");
     }
 
     axisX_->setRange(0, --i);

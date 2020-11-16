@@ -76,5 +76,7 @@ void Covid19Data::RequestCovid19Data()
         qDebug() << "XML error: " << xml.errorString();
     }
 
+    qDebug() << date_list_;
+
 
 }
