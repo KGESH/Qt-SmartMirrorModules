@@ -24,12 +24,16 @@ Covid19Graph::Covid19Graph(QObject *parent)
 
 void Covid19Graph::UpdateGraph()
 {
-    SetAxisX();
-    SetAxisY();
-    graph_->clear();
+    auto chart = new QChart();
+    graph_ = new QLineSeries();
+
+
+    //graph_->clear();
     SetConfirmedPerson();
-    //chart_->addSeries(graph_);
+    chart->addSeries(graph_);
     SetRecentlyDateList();
+
+
 
 }
 
@@ -70,7 +74,7 @@ void Covid19Graph::SetAxisX()
 {
     if(axisX_ != nullptr){
         //graph_->detachAxis(axisX_);
-        chart_->removeAxis(axisX_);
+        //chart_->removeAxis(axisX_);
 
         delete axisX_;
     }
@@ -90,7 +94,7 @@ void Covid19Graph::SetAxisY()
 {
     if(axisY_ != nullptr){
         //graph_->detachAxis(axisY_);
-        chart_->removeAxis(axisY_);
+        //chart_->removeAxis(axisY_);
         delete axisY_;
     }
     axisY_ = new QCategoryAxis();
