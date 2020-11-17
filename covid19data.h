@@ -19,7 +19,7 @@ private slots:
     void RequestCovid19Data();
 
 private:
-
+    void RequestAPI();
     QNetworkAccessManager *network_manager_;
     QNetworkReply *network_reply_;
     QStringList confirmed_person_count_list_;

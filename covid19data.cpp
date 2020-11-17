@@ -21,7 +21,12 @@ Covid19Data::Covid19Data(QObject *parent)
     : QObject(parent)
 {
     network_manager_ = new QNetworkAccessManager(this);
+    RequestAPI();
+}
 
+
+void Covid19Data::RequestAPI()
+{
     QDate today = QDate::currentDate();
     QUrlQuery query;
     query.addQueryItem(API_ID, API_KEY);
