@@ -3,6 +3,7 @@
 #include <QUrlQuery>
 #include <QXmlStreamReader>
 #include <QEventLoop>
+#include <QDate>
 
 const QString REQUEST_URL = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson";
 const QString API_ID = "serviceKey";
@@ -11,6 +12,9 @@ const QString NUMBER_OF_RESULTS_PER_PAGE = "numOfRows";
 const QString PAGE_NO = "pageNo";
 const QString START_SEARCH_DATE_RANGE = "startCreateDt";
 const QString END_SEARCH_DATE_RANGE = "endCreateDt";
+const int PREVIOUS_DAYS = -7;   /***  Graph Range
+                                 ***  Ex) -7 = 1 week
+                                                 ***/
 
 
 Covid19Data::Covid19Data(QObject *parent)
@@ -18,12 +22,13 @@ Covid19Data::Covid19Data(QObject *parent)
 {
     network_manager_ = new QNetworkAccessManager(this);
 
+    QDate today = QDate::currentDate();
     QUrlQuery query;
     query.addQueryItem(API_ID, API_KEY);
     query.addQueryItem(NUMBER_OF_RESULTS_PER_PAGE, "10");
     query.addQueryItem(PAGE_NO, "1");
-    query.addQueryItem(START_SEARCH_DATE_RANGE, "20201028");
-    query.addQueryItem(END_SEARCH_DATE_RANGE, "20201104");
+    query.addQueryItem(START_SEARCH_DATE_RANGE, today.addDays(PREVIOUS_DAYS).toString("yyyyMMdd"));
+    query.addQueryItem(END_SEARCH_DATE_RANGE, today.toString("yyyyMMdd"));
 
     QUrl url(REQUEST_URL);
     url.setQuery(query);
@@ -64,9 +69,9 @@ void Covid19Data::RequestCovid19Data()
         if(xml.isStartElement()){
             QString name = xml.name().toString();
             if(name == "decideCnt"){    //확진자 수
-                confirmed_person_count_list_.append(xml.readElementText());
+                confirmed_person_count_list_.push_front(xml.readElementText()); // not append, need reverse
             } else if(name == "stateDt"){   // 해당 날짜
-                date_list_.append(xml.readElementText());
+                date_list_.push_front(xml.readElementText());                   // not append, need reverse
             }
         }
     }
@@ -75,5 +80,4 @@ void Covid19Data::RequestCovid19Data()
     {
         qDebug() << "XML error: " << xml.errorString();
     }
-    qDebug() << date_list_;
 }

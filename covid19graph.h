@@ -36,7 +36,8 @@ private:
     QChartView *graphView_ = nullptr;
     QList<QDate> recently_date_list_;
     QFont graph_font_;
-    QStringList confirmed_person_count = { "20", "40", "60", "80", "100" };
+    QStringList confirmed_person_count;
+    QStringList axisY_value = {"0", "100", "200", "300"};
     int update_value = 0;
 
 
