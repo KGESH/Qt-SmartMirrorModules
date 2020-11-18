@@ -13,7 +13,7 @@ const QString PAGE_NO = "pageNo";
 const QString START_SEARCH_DATE_RANGE = "startCreateDt";
 const QString END_SEARCH_DATE_RANGE = "endCreateDt";
 const int PREVIOUS_DAYS = -7;   /***  Graph Range
-                                 ***  Ex) -7 = 1 week
+                                 ***  Ex) 1 week = -7
                                                  ***/
 
 
@@ -32,8 +32,8 @@ void Covid19Data::RequestAPI()
     query.addQueryItem(API_ID, API_KEY);
     query.addQueryItem(NUMBER_OF_RESULTS_PER_PAGE, "10");
     query.addQueryItem(PAGE_NO, "1");
-    query.addQueryItem(START_SEARCH_DATE_RANGE, today.addDays(PREVIOUS_DAYS).toString("yyyyMMdd"));
-    query.addQueryItem(END_SEARCH_DATE_RANGE, today.toString("yyyyMMdd"));
+    query.addQueryItem(START_SEARCH_DATE_RANGE, today.addDays(PREVIOUS_DAYS).toString("yyyyMMdd"));  /***  Set graph range  ***/
+    query.addQueryItem(END_SEARCH_DATE_RANGE, today.toString("yyyyMMdd"));                           /***                   ***/
 
     QUrl url(REQUEST_URL);
     url.setQuery(query);

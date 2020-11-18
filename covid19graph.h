@@ -37,10 +37,7 @@ private:
     QList<QDate> recently_date_list_;
     QFont graph_font_;
     QStringList confirmed_person_count;
-    QStringList axisY_value = {"0", "100", "200", "300"};
-    int update_value = 0;
-
-
+    QStringList axisY_value = {"0", "100", "200", "300", "400", "500"};
 };
 
 #endif // COVID19GRAPH_H

@@ -3,7 +3,7 @@
 #include <QList>
 
 const int g_MIN_AXIS_Y_RANGE = 0;
-const int g_MAX_AXIS_Y_RANGE = 300;
+const int g_MAX_AXIS_Y_RANGE = 500;
 
 
 Covid19Graph::Covid19Graph(QObject *parent)
@@ -112,7 +112,7 @@ void Covid19Graph::SetAxisY()
     axisY_->setLabelsFont(graph_font_);
     QStringListIterator iter = confirmed_person_count;
 
-    /***  Set Axis Y: 0, 100, 200, 300  ***/
+    /***  Set Axis Y: 0, 100, 200, 300, 400, 500  ***/
     foreach(const QString& y_value, axisY_value){
         axisY_->append(y_value, y_value.toInt());
     }

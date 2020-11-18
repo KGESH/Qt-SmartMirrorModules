@@ -4,6 +4,8 @@
 
 
 const int FONT_SIZE = 30;
+const int ONE_SECOND = 1000;        // 1000 ms
+const int ONE_HOUR = 1000 * 3600;   // Covid19 API Update by 1hour
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -16,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     , covid19_graph_view_(new Covid19Graph(this))
 {
     auto timer  = new QTimer(this);
-    auto timer2 = new QTimer(this);
+    auto graph_update_timer = new QTimer(this);
 
     ui->setupUi(this);
     ui->ui_myfeel_text->setFont(FONT);
@@ -29,9 +31,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(timer, SIGNAL(timeout()), SLOT(ShowTime()));
     connect(timer, SIGNAL(timeout()), SLOT(ShowDate()));
     connect(timer, SIGNAL(timeout()), SLOT(ShowCmdList()));
-    connect(timer2, SIGNAL(timeout()), SLOT(UpdateCovid19Graph()));
-    timer->start(1000); // 1000 ms == 1sec
-    timer2->start(3000);
+    connect(graph_update_timer, SIGNAL(timeout()), SLOT(UpdateCovid19Graph()));
+    timer->start(ONE_SECOND);
+    graph_update_timer->start(ONE_HOUR);
 }
 
 
@@ -71,6 +73,5 @@ void MainWindow::ShowNewsHeadLine()
 void MainWindow::UpdateCovid19Graph()
 {
     covid19_graph_view_->UpdateGraph();
-    //ui->ui_covid19->setChart(covid19_graph_view_->GetGraph());
-
+    ui->ui_covid19->setChart(covid19_graph_view_->GetGraph());
 }
