@@ -27,7 +27,8 @@ SOURCES += \
     date.cpp \
     main.cpp \
     mainwindow.cpp \
-    newsheadline.cpp
+    newsheadline.cpp \
+    weatherforecast.cpp
 
 HEADERS += \
     clock.h \
@@ -36,7 +37,8 @@ HEADERS += \
     covid19graph.h \
     date.h \
     mainwindow.h \
-    newsheadline.h
+    newsheadline.h \
+    weatherforecast.h
 
 FORMS += \
     mainwindow.ui

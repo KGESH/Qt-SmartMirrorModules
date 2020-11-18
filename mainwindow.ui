@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1416</width>
-    <height>848</height>
+    <width>1080</width>
+    <height>1920</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,6 +15,9 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="8" column="1">
+     <widget class="QChartView" name="ui_covid19"/>
+    </item>
     <item row="8" column="0">
      <widget class="QLabel" name="ui_news">
       <property name="text">
@@ -22,10 +25,93 @@
       </property>
      </widget>
     </item>
-    <item row="8" column="1">
-     <widget class="QChartView" name="ui_covid19"/>
+    <item row="1" column="1">
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <widget class="QLabel" name="ui_weather_forecast_label">
+        <property name="text">
+         <string>Weather Forecast</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="ui_weather_time_1">
+          <property name="text">
+           <string>Time1</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="ui_weather_time_2">
+          <property name="text">
+           <string>Time2</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="ui_weather_time_3">
+          <property name="text">
+           <string>Time3</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="ui_weather_image_1">
+          <property name="text">
+           <string>Image1</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="ui_weather_image_2">
+          <property name="text">
+           <string>Image2</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="ui_weather_image_3">
+          <property name="text">
+           <string>Image3</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QLabel" name="ui_weather_temperature_1">
+          <property name="text">
+           <string>Temperature1</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="ui_weather_temperature_2">
+          <property name="text">
+           <string>Temperature2</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="ui_weather_temperature_3">
+          <property name="text">
+           <string>Temperature3</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </item>
-    <item row="0" column="0">
+    <item row="1" column="0">
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
        <widget class="QLabel" name="ui_myfeel_text">
@@ -64,7 +150,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1416</width>
+     <width>1080</width>
      <height>22</height>
     </rect>
    </property>
