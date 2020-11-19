@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     auto timer  = new QTimer(this);
     auto graph_update_timer = new QTimer(this);
+    auto gps = new WeatherForecast(this);
 
     ui->setupUi(this);
     ui->ui_myfeel_text->setFont(FONT);
@@ -69,6 +70,7 @@ void MainWindow::ShowNewsHeadLine()
     QString str = news_list.join("\n"); // concat String by \n
     ui->ui_news->setText(str);
 }
+
 
 void MainWindow::UpdateCovid19Graph()
 {

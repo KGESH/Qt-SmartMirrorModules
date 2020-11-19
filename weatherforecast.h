@@ -3,6 +3,9 @@
 
 #include <QObject>
 #include <QtPositioning/QGeoPositionInfoSource>
+#include <QtPositioning/QGeoCoordinate>
+#include <QGeoAddress>
+#include <QGeoPositionInfo>
 
 
 class WeatherForecast : public QObject
@@ -11,7 +14,13 @@ class WeatherForecast : public QObject
 public:
     explicit WeatherForecast(QObject *parent = nullptr);
 
-signals:
+private slots:
+    void positionUpdated(const QGeoPositionInfo &info);
+
+private:
+    QGeoCoordinate coord;
+    QGeoAddress address;
+
 
 };
 

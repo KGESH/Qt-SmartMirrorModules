@@ -1,4 +1,4 @@
-QT       += core gui network charts xml
+QT       += core gui network charts xml positioning
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

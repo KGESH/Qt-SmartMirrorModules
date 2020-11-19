@@ -8,12 +8,15 @@
 #include "newsheadline.h"
 #include "covid19graph.h"
 #include "commandlist.h"
+#include "weatherforecast.h"
+
 
 class Clock;
 class Date;
 class NewsHeadLine;
 class Covid19Graph;
 class CommandList;
+class WeatherForecast;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
