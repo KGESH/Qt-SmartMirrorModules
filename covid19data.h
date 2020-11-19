@@ -9,6 +9,7 @@
 class Covid19Data : public QObject
 {
     Q_OBJECT
+
 public:
     explicit Covid19Data(QObject *parent = nullptr);
     QStringList& GetConfirmedPersonCountList();

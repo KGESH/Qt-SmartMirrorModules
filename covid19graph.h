@@ -12,12 +12,11 @@ class Covid19Data;
 class Covid19Graph : public QObject
 {
     Q_OBJECT
+
 public:
     explicit Covid19Graph(QObject *parent = nullptr);
     QChart* GetGraph();
     void UpdateGraph();
-
-
 
 private:
     void SetAxisX();
@@ -26,7 +25,6 @@ private:
     void SetRecentlyDateList();
     void SetConfirmedPerson();
     void SetCovid19Data();
-
 
     Covid19Data *covid_data_ = nullptr;
     QChart *chart_ = nullptr;

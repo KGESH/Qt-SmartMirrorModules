@@ -13,8 +13,6 @@ public:
     explicit CommandList(QObject *parent = nullptr);
     QStringList& GetCmdList();
 
-
-
 private:
     QStringList cmd_list_ = {"Hi Google", "Get Off","cmd3"};
 };

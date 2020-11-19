@@ -7,7 +7,6 @@ class Date : public QObject
 {
     Q_OBJECT
 
-
 public:
     explicit Date(QObject *parent = nullptr);
     QString& GetCurrentDate();

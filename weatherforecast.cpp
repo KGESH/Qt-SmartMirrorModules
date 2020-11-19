@@ -2,7 +2,9 @@
 #include <QDebug>
 #include <QUrl>
 #include <QUrlQuery>
-#include <QEventLoop>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
 
 /***  OpenWeatherMap API      ***/
 const QString REQUEST_URL = "https://api.openweathermap.org/data/2.5/onecall";
@@ -22,21 +24,13 @@ const double ZERO_KELVIN = 273.15;  /***  temperature 0°C  ***/
 
 
 
-WeatherForecast::WeatherForecast(QObject *parent) : QObject(parent)
+WeatherForecast::WeatherForecast(QObject *parent)
+    : QObject(parent)
+    , network_manager_(new QNetworkAccessManager(this))
 {
-    network_manager_ = new QNetworkAccessManager(this);
-    qDebug() << "in con";
     RequestOpenWeatherMapAPI();
-
-//    QGeoPositionInfoSource *source = QGeoPositionInfoSource::createDefaultSource(this);
-//           if (source) {
-//               connect(source, SIGNAL(positionUpdated(QGeoPositionInfo)),
-//                       this, SLOT(positionUpdated(QGeoPositionInfo)));
-//               source->startUpdates();
-//           }
-//    QGeoPositionInfo info;
-//    qDebug() << info.coordinate();
 }
+
 
 void WeatherForecast::RequestOpenWeatherMapAPI()
 {
@@ -49,31 +43,37 @@ void WeatherForecast::RequestOpenWeatherMapAPI()
     query.addQueryItem(APP_ID, API_KEY);
     url.setQuery(query);
     qDebug() << url;
+
     QNetworkRequest request(url);
     network_reply_ = network_manager_->get(request);
     connect(network_reply_, SIGNAL(finished()), this, SLOT(ParseWeatherData()));
 }
 
+
 void WeatherForecast::ParseWeatherData()
 {
-    qDebug() << "parse in";
     if (network_reply_->error()) {
             qDebug() << network_reply_->errorString();
             return;
     }
-     QByteArray data = network_reply_->readAll();
-     qDebug() << data;
 
+     QByteArray data = network_reply_->readAll();
+     QJsonDocument json_doc(QJsonDocument::fromJson(data));
+     QJsonObject json_reply = json_doc.object();
+     QJsonValue value = json_reply.value("hourly");
+     QJsonArray title = value.toArray();
+
+     QDateTime date;
+     foreach (const QJsonValue &val, title){
+         uint unix_time_stamp = val.toObject().value("dt").toInt();
+         double temperature = val.toObject().value("temp").toDouble() - ZERO_KELVIN;
+         date.setTime_t(unix_time_stamp);
+         weather_time_list_.append(date);
+         temperature_list_.append(temperature);
+     }
+
+     qDebug() << weather_time_list_;
+     qDebug() << temperature_list_;
      network_reply_->close();
      network_reply_->deleteLater();
-
-}
-
-void WeatherForecast::positionUpdated(const QGeoPositionInfo &info)
-{
-    qDebug() << info;
-    qDebug() << info.coordinate().latitude();
-    qDebug() << "cord";
-    coord = info.coordinate();
-    qDebug() << coord;
 }

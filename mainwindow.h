@@ -27,12 +27,10 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     Ui::MainWindow *ui;
-
 
 public slots:
     void ShowCmdList();
@@ -41,7 +39,6 @@ public slots:
     void ShowNewsHeadLine();
     void UpdateCovid19Graph();
 
-
 private:
     const QFont FONT;
     Clock *clock_;
@@ -49,8 +46,6 @@ private:
     CommandList *cmd_list_;
     NewsHeadLine *news_;
     Covid19Graph *covid19_graph_view_;
-    WeatherForecast *weather;
-
-
+    WeatherForecast *weather_forecast_;
 };
 #endif // MAINWINDOW_H

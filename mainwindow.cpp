@@ -16,10 +16,10 @@ MainWindow::MainWindow(QWidget *parent)
     , cmd_list_(new CommandList(this))
     , news_(new NewsHeadLine(this))
     , covid19_graph_view_(new Covid19Graph(this))
+    , weather_forecast_(new WeatherForecast(this))
 {
     auto timer  = new QTimer(this);
     auto graph_update_timer = new QTimer(this);
-    weather = new WeatherForecast(this);
 
     ui->setupUi(this);
     ui->ui_myfeel_text->setFont(FONT);

@@ -2,12 +2,7 @@
 #define WEATHERFORECAST_H
 
 #include <QObject>
-#include <QtPositioning/QGeoPositionInfoSource>
-#include <QtPositioning/QGeoCoordinate>
-#include <QGeoAddress>
-#include <QGeoPositionInfo>
 #include <QtNetwork/QNetworkReply>
-
 
 
 class WeatherForecast : public QObject
@@ -17,17 +12,15 @@ public:
     explicit WeatherForecast(QObject *parent = nullptr);
 
 private slots:
-    void positionUpdated(const QGeoPositionInfo &info);
     void ParseWeatherData();
 
 
 private:
-
     void RequestOpenWeatherMapAPI();
-    QGeoCoordinate coord;
-    QGeoAddress address;
     QNetworkAccessManager *network_manager_;
     QNetworkReply *network_reply_;
+    QList<QDateTime> weather_time_list_;
+    QList<double> temperature_list_;
 
 
 };
