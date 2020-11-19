@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     auto timer  = new QTimer(this);
     auto graph_update_timer = new QTimer(this);
-    auto gps = new WeatherForecast(this);
+    weather = new WeatherForecast(this);
 
     ui->setupUi(this);
     ui->ui_myfeel_text->setFont(FONT);

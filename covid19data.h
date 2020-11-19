@@ -14,12 +14,9 @@ public:
     QStringList& GetConfirmedPersonCountList();
     QStringList& GetDateList();
 
-
-private slots:
-    void RequestCovid19Data();
-
 private:
     void RequestAPI();
+    void ParseCovid19Data();
     QNetworkAccessManager *network_manager_;
     QNetworkReply *network_reply_;
     QStringList confirmed_person_count_list_;

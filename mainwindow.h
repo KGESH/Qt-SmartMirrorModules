@@ -49,7 +49,7 @@ private:
     CommandList *cmd_list_;
     NewsHeadLine *news_;
     Covid19Graph *covid19_graph_view_;
-
+    WeatherForecast *weather;
 
 
 };

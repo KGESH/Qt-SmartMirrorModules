@@ -40,10 +40,12 @@ void Covid19Data::RequestAPI()
 
     QNetworkRequest request(url);
     network_reply_ = network_manager_->get(request);
+
     QEventLoop loop;
     connect(network_reply_, SIGNAL(finished()), &loop, SLOT(quit()));
     loop.exec();
-    RequestCovid19Data();
+
+    ParseCovid19Data();
 }
 
 
@@ -59,7 +61,7 @@ QStringList& Covid19Data::GetDateList()
 }
 
 
-void Covid19Data::RequestCovid19Data()
+void Covid19Data::ParseCovid19Data()
 {
     if (network_reply_->error()) {
             qDebug() << network_reply_->errorString();

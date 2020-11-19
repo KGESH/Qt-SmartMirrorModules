@@ -6,6 +6,8 @@
 #include <QtPositioning/QGeoCoordinate>
 #include <QGeoAddress>
 #include <QGeoPositionInfo>
+#include <QtNetwork/QNetworkReply>
+
 
 
 class WeatherForecast : public QObject
@@ -16,10 +18,16 @@ public:
 
 private slots:
     void positionUpdated(const QGeoPositionInfo &info);
+    void ParseWeatherData();
+
 
 private:
+
+    void RequestOpenWeatherMapAPI();
     QGeoCoordinate coord;
     QGeoAddress address;
+    QNetworkAccessManager *network_manager_;
+    QNetworkReply *network_reply_;
 
 
 };
