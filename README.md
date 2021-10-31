@@ -51,10 +51,10 @@
 - 이대로하면 라즈베리파이용 키트 생성 끝
 
 4.  QT Creator 에서 프로젝트 만들고 데스크탑용 키트, 라즈베리파이용 키트 둘다 선택하고 프로젝트 빌드 후 실행해보기
-    - 이때 내 경우에는 데스크탑 키트 실행할때
-      <pre>:-1: error: cannot find -lGL</pre> 이런 에러나면서 빌드가 안됐음
-      - https://stackoverflow.com/questions/13701551/qt-error-cannot-find-libs/53866171
-        - 참고해서 해결
+    - 이때 내 경우에는 데스크탑 키트 실행할때 이런 에러나면서 빌드가 안됐음
+    <pre>:-1: error: cannot find -lGL</pre> 
+    - https://stackoverflow.com/questions/13701551/qt-error-cannot-find-libs/53866171
+    - 참고해서 해결
 
 ## Important
 
