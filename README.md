@@ -19,8 +19,8 @@
 2. 공식 홈페이지에서 qt 설치파일 다운후 설치진행
 
 - 버전은 5.15.0
-- 설치하면 QT Creator 자동으로 설치되는데 QT Creator 실행안되면
-<pre>sudo apt install qtcreator</pre>로 설치
+- 설치하면 QT Creator 자동으로 설치되는데 QT Creator 실행안되면 아래 명령어로 설치
+<pre>sudo apt install qtcreator</pre>
 - 공식 홈페이지에서 설치가 너무 느리면 미러서버에서 설치
   - https://blog.naver.com/chandong83/221845293395 참조
 
