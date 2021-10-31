@@ -20,7 +20,7 @@
 
 - 버전은 5.15.0
 - 설치하면 QT Creator 자동으로 설치되는데 QT Creator 실행안되면
-  - <pre>sudo apt install qtcreator</pre>로 설치
+<pre>sudo apt install qtcreator</pre>로 설치
 - 공식 홈페이지에서 설치가 너무 느리면 미러서버에서 설치
   - https://blog.naver.com/chandong83/221845293395 참조
 
@@ -54,7 +54,7 @@
       <pre>:-1: error: cannot find -lGL</pre> 이런 에러나면서 빌드가 안됐음
       - https://stackoverflow.com/questions/13701551/qt-error-cannot-find-libs/53866171 여기 참고해서 해결
 
-## important
+## Important
 
 - 라즈베리파이 빌드할때는 .pro 파일에 라즈베리파이에 배포할 경로를 써줘야함
 - 3번 링크 아래쪽에 프로젝트 생성 및 배포 참조
